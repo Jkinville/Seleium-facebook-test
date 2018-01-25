@@ -20,8 +20,8 @@ public class tests {
 		WebElement email = driver.findElement(By.name("email"));
 		WebElement password = driver.findElement(By.name("pass"));
 		
-		email.sendKeys("EMAIL_HERE");
-		password.sendKeys("PASSWORD_HERE");
+		email.sendKeys("johnathonk.jk@gmail.com");
+		password.sendKeys("3ndl355n1ght");
 		
 		WebElement logIn = driver.findElement(By.id("loginbutton"));
 		
@@ -45,24 +45,13 @@ public class tests {
 	}
 	@Test
 	public void loginTest(){
-		/*System.setProperty("webdriver.chrome.driver","F:\\chromedriver_win32\\chromedriver.exe");
-		Map<String, Object> prefs = new HashMap<String, Object>();
-		prefs.put("profile.default_content_setting_values.notifications", 2);
-		ChromeOptions options = new ChromeOptions();
-		options.setExperimentalOption("prefs", prefs);
-		driver = new ChromeDriver(options);*/
+		
 		
 		login();
 		
 		assert(driver.getTitle().equals("Facebook"));
 		driver.close();
-		
-		
-		
-		
-		
-		
-	}
+		}
 	@Test
 	public void logoutTest() {
 		login();
@@ -70,6 +59,33 @@ public class tests {
 		assert(driver.getTitle().equals("Facebook - Log In or Sign Up"));
 		driver.close();
 		
+	}
+	@Test
+	public void incorrectEmailTest() {
+		driver.get("https://www.facebook.com");
+		WebElement email = driver.findElement(By.name("email"));
+		WebElement password = driver.findElement(By.name("pass"));
+		WebElement logIn = driver.findElement(By.id("loginbutton"));
+		
+		email.sendKeys("wdasdad");
+		password.sendKeys("REAL_PASSWORD_HERE");
+		
+		logIn.click();
+		
+		assert(driver.getTitle().equals("Log into Facebook | Facebook"));
+		
+	}
+	@Test
+	public void blankEmailTest() {
+		driver.get("https://www.facebook.com");
+		WebElement password = driver.findElement(By.name("pass"));
+		WebElement logIn = driver.findElement(By.id("loginbutton"));
+		
+		password.sendKeys("REAL_PASSWORD_HERE");
+		
+		logIn.click();
+		
+		assert(driver.getTitle().equals("Log into Facebook | Facebook"));
 	}
 
 	
