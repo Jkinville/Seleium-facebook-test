@@ -12,5 +12,6 @@
 	<classpathentry kind="lib" path="C:/Users/John/Downloads/selenium-java-3.7.1/libs/httpcore-4.4.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/John/Downloads/selenium-java-3.7.1/client-combined-3.7.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/John/Downloads/selenium-java-3.7.1/client-combined-3.7.1-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
