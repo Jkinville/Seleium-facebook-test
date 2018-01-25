@@ -20,8 +20,8 @@ public class tests {
 		WebElement email = driver.findElement(By.name("email"));
 		WebElement password = driver.findElement(By.name("pass"));
 		
-		email.sendKeys("johnathonk.jk@gmail.com");
-		password.sendKeys("3ndl355n1ght");
+		email.sendKeys("EMAIL_HERE");
+		password.sendKeys("PASSWORD_HERE");
 		
 		WebElement logIn = driver.findElement(By.id("loginbutton"));
 		
