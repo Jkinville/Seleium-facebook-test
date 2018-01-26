@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.*;
@@ -34,6 +35,10 @@ public class tests {
 		driver.findElement(By.xpath("//a[contains(@data-gt,'menu_logout')]")).click();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
+	public static void clickNewsFeed() {
+		driver.findElement(By.linkText("News Feed")).click();
+		
+	}
 	@Before
 	public void init() {
 		System.setProperty("webdriver.chrome.driver","F:\\chromedriver_win32\\chromedriver.exe");
@@ -50,14 +55,14 @@ public class tests {
 		login();
 		
 		assert(driver.getTitle().equals("Facebook"));
-		driver.close();
+		//driver.close();
 		}
 	@Test
 	public void logoutTest() {
 		login();
 		logout();
 		assert(driver.getTitle().equals("Facebook - Log In or Sign Up"));
-		driver.close();
+		//driver.close();
 		
 	}
 	@Test
@@ -87,7 +92,17 @@ public class tests {
 		
 		assert(driver.getTitle().equals("Log into Facebook | Facebook"));
 	}
-
+	@Test
+	public void testNewsFeed() {
+		login();
+		clickNewsFeed();
+		
+		assert(driver.getTitle().equals("Facebook"));
+	}
+	@After
+	public void end(){
+		driver.close();
+	}
 	
 	
 
