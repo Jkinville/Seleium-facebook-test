@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import facebookmethods.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,29 +18,9 @@ import org.openqa.selenium.WebDriver;
 
 public class tests {
 	static WebDriver driver;
-	public static void login() {
-		driver.get("https://www.facebook.com");
-		WebElement email = driver.findElement(By.name("email"));
-		WebElement password = driver.findElement(By.name("pass"));
-		
-		email.sendKeys("johnathonk.jk@gmail.com");
-		password.sendKeys("3ndl355n1ght");
-		
-		WebElement logIn = driver.findElement(By.id("loginbutton"));
-		
-		logIn.click();
-		
-	}
-	public static void logout() {
-		driver.findElement(By.id("userNavigationLabel")).click();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//a[contains(@data-gt,'menu_logout')]")).click();
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-	}
-	public static void clickNewsFeed() {
-		driver.findElement(By.linkText("News Feed")).click();
-		
-	}
+	methods method;
+	
+	
 	@Before
 	public void init() {
 		System.setProperty("webdriver.chrome.driver","F:\\chromedriver_win32\\chromedriver.exe");
@@ -52,17 +34,15 @@ public class tests {
 	public void loginTest(){
 		
 		
-		login();
+		method.login(driver);
 		
 		assert(driver.getTitle().equals("Facebook"));
-		//driver.close();
 		}
 	@Test
 	public void logoutTest() {
-		login();
-		logout();
+		method.login(driver);
+		method.logout(driver);
 		assert(driver.getTitle().equals("Facebook - Log In or Sign Up"));
-		//driver.close();
 		
 	}
 	@Test
@@ -94,14 +74,15 @@ public class tests {
 	}
 	@Test
 	public void testNewsFeed() {
-		login();
-		clickNewsFeed();
+		method.login(driver);
+		method.clickNewsFeed(driver);
 		
 		assert(driver.getTitle().equals("Facebook"));
 	}
 	@After
 	public void end(){
 		driver.close();
+		driver.quit();
 	}
 	
 	
