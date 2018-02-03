@@ -18,9 +18,9 @@ import org.openqa.selenium.WebDriver;
 
 public class tests {
 	static WebDriver driver;
+
 	methods method;
-	
-	
+
 	@Before
 	public void init() {
 		System.setProperty("webdriver.chrome.driver","F:\\chromedriver_win32\\chromedriver.exe");
